@@ -1,0 +1,3 @@
+Fixed app/build.gradle.kts so Java compileOptions and Kotlin/KSP use JVM 17.
+Upload this full project ZIP contents to GitHub and rerun Actions.
+Do not use the previous CourierCompanion_GradleFix.zip; it was a Groovy build.gradle replacement and does not apply to this Kotlin DSL project.
