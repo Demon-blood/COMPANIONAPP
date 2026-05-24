@@ -1,6 +1,0 @@
-V4 fixes:
-- Namespace/applicationId now match actual Kotlin package com.ksp.couriercompanion.
-- Removed AppCompat and Material theme dependency usage.
-- MainActivity and ImportActivity now use androidx.activity.ComponentActivity.
-- Theme.CourierCompanion now inherits from @android:style/Theme.Material.Light.NoActionBar.
-- JVM toolchain remains 17.
