@@ -1,0 +1,2 @@
+Fixed MainActivity.kt by explicitly adding the visible 'Start screen OCR monitor' button.
+The button launches ScreenCapturePermissionActivity for Android screen-capture permission.

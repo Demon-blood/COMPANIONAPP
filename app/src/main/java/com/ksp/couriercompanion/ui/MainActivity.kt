@@ -38,9 +38,15 @@ class MainActivity : ComponentActivity() {
             textSize = 24f
         }
 
+        val phaseLabel = TextView(this).apply {
+            text = "Phase 2: OCR monitor foundation"
+            textSize = 15f
+        }
+
         statsText = TextView(this).apply {
             textSize = 16f
             text = "Loading stats..."
+            setPadding(0, 24, 0, 24)
         }
 
         val permissionsButton = Button(this).apply {
@@ -85,6 +91,13 @@ class MainActivity : ComponentActivity() {
             }
         }
 
+        val startOcrButton = Button(this).apply {
+            text = "Start screen OCR monitor"
+            setOnClickListener {
+                startActivity(Intent(this@MainActivity, ScreenCapturePermissionActivity::class.java))
+            }
+        }
+
         val importButton = Button(this).apply {
             text = "Import Maxymo history"
             setOnClickListener {
@@ -93,11 +106,13 @@ class MainActivity : ComponentActivity() {
         }
 
         layout.addView(title)
+        layout.addView(phaseLabel)
         layout.addView(statsText)
         layout.addView(permissionsButton)
         layout.addView(overlayPermissionButton)
         layout.addView(startGpsButton)
         layout.addView(startOverlayButton)
+        layout.addView(startOcrButton)
         layout.addView(importButton)
 
         setContentView(ScrollView(this).apply { addView(layout) })
