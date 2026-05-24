@@ -1,0 +1,4 @@
+Fixes:
+- Added kotlinx-coroutines-play-services:1.9.0 for ML Kit Task.await().
+- Set Room exportSchema=false to remove schema warning.
+- The libmlkit_google_ocr_pipeline.so strip warning is harmless; Android packages it as-is.

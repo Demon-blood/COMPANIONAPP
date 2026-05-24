@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase
 @Database(
     entities = [OfferEntity::class, LocationPingEntity::class],
     version = 1,
-    exportSchema = true
+    exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
     abstract fun offerDao(): OfferDao
