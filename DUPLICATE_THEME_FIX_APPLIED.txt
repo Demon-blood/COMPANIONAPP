@@ -1,0 +1,2 @@
+Fixed duplicate Android style resource by keeping Theme.CourierCompanion only in values/themes.xml.
+values/styles.xml is now empty-but-valid.
