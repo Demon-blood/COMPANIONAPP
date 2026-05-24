@@ -3,7 +3,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AppCompatActivity
+import androidx.activity.ComponentActivity
 import androidx.lifecycle.lifecycleScope
 import com.ksp.couriercompanion.data.AppDatabase
 import com.ksp.couriercompanion.importer.MaxymoImportParser
@@ -11,7 +11,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class ImportActivity: AppCompatActivity(){
+class ImportActivity: ComponentActivity(){
     private lateinit var output:TextView
     private val picker=registerForActivityResult(ActivityResultContracts.OpenDocument()){ uri:Uri? -> uri?.let{ import(it) } }
     override fun onCreate(b:Bundle?){ super.onCreate(b)

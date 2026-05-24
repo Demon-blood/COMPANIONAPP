@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.provider.Settings
 import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AppCompatActivity
+import androidx.activity.ComponentActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import com.ksp.couriercompanion.data.AppDatabase
@@ -15,7 +15,7 @@ import com.ksp.couriercompanion.services.LocationLogService
 import com.ksp.couriercompanion.services.ScreenCaptureService
 import kotlinx.coroutines.launch
 
-class MainActivity: AppCompatActivity(){
+class MainActivity: ComponentActivity(){
     private lateinit var status:TextView
     private val perm=registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()){ refreshStats() }
     override fun onCreate(b:Bundle?){ super.onCreate(b)
