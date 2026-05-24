@@ -9,10 +9,12 @@ import android.view.Gravity
 import android.view.WindowManager
 import android.widget.TextView
 import com.ksp.couriercompanion.data.AppDatabase
+import com.ksp.couriercompanion.ocr.OcrRuntimeStatus
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.launch
 
 class OverlayService : Service() {
@@ -56,14 +58,16 @@ class OverlayService : Service() {
 
     private fun observeOffers() {
         scope.launch {
-            AppDatabase.get(applicationContext).offerDao().observeRecent().collect { offers ->
-                val latest = offers.firstOrNull()
-                view?.text = if (latest == null) {
-                    "Courier Companion\nWaiting for offer..."
-                } else {
-                    "Courier Companion\n${latest.recommendation ?: "UNKNOWN"} | Score ${"%.1f".format(latest.score ?: 0.0)}\n€${latest.offerAmount ?: 0.0} | ${latest.distanceKm ?: 0.0} km | ${latest.estimatedMinutes ?: 0} min\n${latest.restaurant ?: "Unknown restaurant"}"
+            AppDatabase.get(applicationContext).offerDao().observeRecent()
+                .combine(OcrRuntimeStatus.status) { offers, status -> offers to status }
+                .collect { (offers, status) ->
+                    val latest = offers.firstOrNull()
+                    view?.text = if (latest == null) {
+                        "Courier Companion\n$status"
+                    } else {
+                        "Courier Companion\n${latest.recommendation ?: "UNKNOWN"} | Score ${"%.1f".format(latest.score ?: 0.0)}\n€${"%.2f".format(latest.offerAmount ?: 0.0)} | ${"%.1f".format(latest.distanceKm ?: 0.0)} km | ${latest.estimatedMinutes ?: 0} min\n${latest.restaurant ?: "Unknown restaurant"}\n$status"
+                    }
                 }
-            }
         }
     }
 

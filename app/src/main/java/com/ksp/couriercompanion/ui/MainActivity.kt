@@ -39,7 +39,7 @@ class MainActivity : ComponentActivity() {
         }
 
         val phaseLabel = TextView(this).apply {
-            text = "Phase 2: OCR monitor foundation"
+            text = "Phase 3: Live OCR offer detection"
             textSize = 15f
         }
 
