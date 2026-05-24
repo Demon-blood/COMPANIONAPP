@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.ksp.couriercompanion"
+    namespace = "com.couriercompanion.aio"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.ksp.couriercompanion"
+        applicationId = "com.couriercompanion.aio"
         minSdk = 26
         targetSdk = 35
         versionCode = 1
